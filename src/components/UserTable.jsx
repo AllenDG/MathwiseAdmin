@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-export default function UserTable({ users }) {
+export default function UserTable({ users, handleDelete }) {
   const categories = [
-    { title: 'First Name' },
-    { title: 'Last Name' },
-    { title: 'Age' },
-    { title: 'Email' },
-    { title: 'Contact Number' },
-    { title: 'Guardian' },
+    { title: "First Name" },
+    { title: "Last Name" },
+    { title: "Age" },
+    { title: "Email" },
+    { title: "Contact Number" },
+    { title: "Guardian" },
   ];
 
   return (
@@ -49,11 +49,17 @@ export default function UserTable({ users }) {
               <div className="text-sm text-gray-900">{user.guardian}</div>
             </td>
             <td className="flex gap-2 px-6 py-4 whitespace-nowrap">
-              <Link className='bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded' to={`/home/user/${user.id}`}>
+              <Link
+                className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
+                to={`/home/user/${user.id}`}
+              >
                 View
               </Link>
-              <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
-                Disabled
+              <button
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                onClick={() => handleDelete(user.id)}
+              >
+                Delete
               </button>
             </td>
           </tr>

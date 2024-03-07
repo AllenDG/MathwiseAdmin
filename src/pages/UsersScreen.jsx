@@ -5,6 +5,8 @@ import UserTable from '../components/UserTable';
 import Searchbar from '../components/Searchbar';
 import Pagination from '../components/Pagination';
 import ItemsPerPage from '../components/ItemsPerPage';
+import { db } from '../../firebase';
+import { deleteDoc, doc } from 'firebase/firestore';
 
 export default function UsersScreen() {
   const { users, loading } = useFetchAllUsersData();
@@ -34,6 +36,21 @@ export default function UsersScreen() {
     setCurrentPage(1);
   };
 
+
+  const handleDeleteUsers = async (userId) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this user?"
+    );
+
+    if (confirmDelete) {
+      try {
+        await deleteDoc(doc(db, "users", userId));
+        alert("Deleted Successfully!");
+      } catch (error) {
+        alert("Error deleting user:", error);
+      }
+    }
+  };
   return (
     <div className="w-full p-6">
       {loading ? (
@@ -45,7 +62,7 @@ export default function UsersScreen() {
             <Searchbar searchTerm={searchTerm} handleSearchChange={handleSearchChange} />
             <ItemsPerPage itemsPerPage={itemsPerPage} handleItemsPerPageChange={handleItemsPerPageChange} /> 
           </form>
-          <UserTable users={currentUsers} />          
+          <UserTable users={currentUsers} handleDelete={handleDeleteUsers} />          
           <Pagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage} />
         </>
       )}

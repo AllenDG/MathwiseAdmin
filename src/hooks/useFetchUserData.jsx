@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase"; // Assuming you have a db instance exported from your Firebase configuration file
+import { db } from "../../firebase"; 
 
 const useFetchUserData = ({ id }) => {
   const [user, setUser] = useState(null);

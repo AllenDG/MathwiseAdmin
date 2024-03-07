@@ -5,16 +5,14 @@ import { getStorage } from 'firebase/storage';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_API_KEY,
-  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
-  appId:  import.meta.env.VITE_APP_ID,
-  measurementId: import.meta.env.VITE_MEASUREMENT_ID
+  apiKey: "AIzaSyDfGtyudWyK4TXBFCsVnBpgFbIw6EvnBVM",
+  authDomain: "matwise-142e6.firebaseapp.com",
+  projectId: "matwise-142e6",
+  storageBucket: "matwise-142e6.appspot.com",
+  messagingSenderId: "652132048218",
+  appId: "1:652132048218:web:6904e84596c19e5b8de763",
+  measurementId: "G-P9J52V9C9Q"
 };
-  
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
