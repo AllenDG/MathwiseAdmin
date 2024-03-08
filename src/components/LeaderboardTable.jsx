@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { db } from '../../firebase';
 import { doc, getDoc,} from 'firebase/firestore';
+import Loading from './Loading';
 
 export default function LeaderboardTable({ users, handleDelete }) {
   const [userData, setUserData] = useState({});
@@ -45,7 +46,7 @@ export default function LeaderboardTable({ users, handleDelete }) {
     { title: 'Score' },
   ];
 
-  if (loading) return "yamete kudasai! onee-chan"
+  if (loading) return <Loading/>
 
   return (
     <table className="min-w-full divide-y divide-gray-200">
